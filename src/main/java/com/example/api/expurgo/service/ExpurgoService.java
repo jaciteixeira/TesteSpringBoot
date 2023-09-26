@@ -1,24 +1,31 @@
-package com.example.testes.teste.service;
+package com.example.api.expurgo.service;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-public class TesteService {
+import com.example.api.expurgo.model.Diretorio;
 
-    public List<File> listarArquivosDaPasta(String caminhoDiretorio) {
+@Service
+public class ExpurgoService {
+    
+    public List<Diretorio> listarArquivosDaPasta(String caminhoDiretorio) {
         Assert.notNull(caminhoDiretorio, "O caminho do diretório está nulo!");
 
-        @Autowired
-        File diretorio(Diretorio caminhoDiretorio);
+        File diretorio = new File(caminhoDiretorio);
         
         if (!diretorio.exists() || !diretorio.isDirectory()) {
             throw new IllegalArgumentException("O caminho especificado não é um diretório válido.");
         }
 
         File[] arquivos = diretorio.listFiles();
+
+        for(arquivo : arquivos){
+            
+        }
 
         if (arquivos != null) {
             return Arrays.asList(arquivos);
