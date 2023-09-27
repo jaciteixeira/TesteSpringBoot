@@ -8,7 +8,7 @@ import com.example.api.expurgo.service.ExpurgoService;
 public class ExpurgoServiceTest {
     public static void main(String[] args) {
         ExpurgoService expurgoService = new ExpurgoService();
-        List<Diretorio> arquivos = expurgoService.listarArquivosDaPasta("/C:");
+        List<Diretorio> arquivos = expurgoService.listarArquivosDaPasta("C:\\Users\\yarle\\Desktop\\Jaci\\PastaVazia");
 
         for(Diretorio arquivo : arquivos){
             System.out.println(arquivo.getName());
