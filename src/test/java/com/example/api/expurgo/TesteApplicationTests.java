@@ -1,4 +1,4 @@
-package com.example.testes.teste;
+package com.example.api.expurgo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

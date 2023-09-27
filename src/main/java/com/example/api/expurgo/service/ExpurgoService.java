@@ -1,7 +1,7 @@
 package com.example.api.expurgo.service;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -14,24 +14,26 @@ public class ExpurgoService {
     
     public List<Diretorio> listarArquivosDaPasta(String caminhoDiretorio) {
         Assert.notNull(caminhoDiretorio, "O caminho do diretório está nulo!");
+        List<Diretorio> conteudo = new ArrayList<>();
 
-        File diretorio = new File(caminhoDiretorio);
-        
-        if (!diretorio.exists() || !diretorio.isDirectory()) {
-            throw new IllegalArgumentException("O caminho especificado não é um diretório válido.");
+        File pasta = new File(caminhoDiretorio);
+        if (pasta.exists() && pasta.isDirectory()) {
+
+            File[] arquivos = pasta.listFiles();
+    
+            for(File arquivo : arquivos){
+                Diretorio diretorio = new Diretorio();
+                diretorio.setDiretorio(arquivo.isDirectory());
+                diretorio.setDiretorioPai(arquivo.getParent());
+                diretorio.setName(arquivo.getName());
+                diretorio.setTamanho(arquivo.length());
+
+                conteudo.add(diretorio);
+                
+            }
         }
+        return conteudo;
 
-        File[] arquivos = diretorio.listFiles();
-
-        for(arquivo : arquivos){
-            
-        }
-
-        if (arquivos != null) {
-            return Arrays.asList(arquivos);
-        } else {
-            return null; // ou uma lista vazia, dependendo do seu caso de uso
-        }
     }
 }
 
