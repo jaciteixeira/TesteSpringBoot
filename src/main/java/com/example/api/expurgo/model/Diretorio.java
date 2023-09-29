@@ -1,8 +1,11 @@
 package com.example.api.expurgo.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
+import java.io.File;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
@@ -11,39 +14,20 @@ import lombok.Data;
 @Table
 public class Diretorio {
 
-    @Column
     @Id
+    @Column
     private String name;
-    @Column("diretorio-pai")
+    @Column
     private String diretorioPai;
     @Column
     private boolean diretorio;
     @Column
     private Long tamanho;
 
-    public String getName() {
-        return name;
+    public Diretorio(File arquivo){
+        diretorio = arquivo.isDirectory();
+        diretorioPai = arquivo.getParent();
+        name = arquivo.getName();
+        tamanho = arquivo.length();
     }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getDiretorioPai() {
-        return diretorioPai;
-    }
-    public void setDiretorioPai(String diretorioPai) {
-        this.diretorioPai = diretorioPai;
-    }
-    public boolean isDiretorio() {
-        return diretorio;
-    }
-    public void setDiretorio(boolean diretorio) {
-        this.diretorio = diretorio;
-    }
-    public Long getTamanho() {
-        return tamanho;
-    }
-    public void setTamanho(Long tamanho) {
-        this.tamanho = tamanho;
-    }
-
 }
