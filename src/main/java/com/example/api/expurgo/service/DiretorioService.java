@@ -11,7 +11,7 @@ import org.springframework.util.Assert;
 import com.example.api.expurgo.model.Diretorio;
 
 @Service
-public class ExpurgoService {
+public class DiretorioService {
     
     public List<Diretorio> listarArquivosDaPasta(String caminhoDiretorio) {
         Assert.notNull(caminhoDiretorio, "O caminho do diretório está nulo!");

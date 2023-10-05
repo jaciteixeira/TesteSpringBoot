@@ -25,9 +25,9 @@ public class Diretorio {
     private Long tamanho;
 
     public Diretorio(File arquivo){
-        diretorio = arquivo.isDirectory();
-        diretorioPai = arquivo.getParent();
         name = arquivo.getName();
         tamanho = arquivo.length();
+        diretorio = arquivo.isDirectory();
+        diretorioPai = arquivo.getParent();
     }
 }
